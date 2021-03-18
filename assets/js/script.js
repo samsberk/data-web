@@ -5,13 +5,7 @@ fetch('../../json/team_run.json')
     return response.json();
 })
 .then(function (obj){
-    // Set up the chart
-    let v = [];
-    let k = [];
-    for (let i in obj){
-        k.push(i);
-        v.push(obj[i]);
-    }
+    let v = Object.entries(obj);
     const chart1 = new Highcharts.Chart({
         chart: {
             renderTo: 'problem1',
@@ -28,7 +22,7 @@ fetch('../../json/team_run.json')
             text: 'Total runs scored by team'
         },
         xAxis:{
-            categories: k
+            type: 'category'
         },
         plotOptions: {
             column: {
@@ -53,13 +47,7 @@ fetch('../../json/rcb_run.json')
     return response.json();
 })
 .then(function (obj){
-    // Set up the chart
-    let v = [];
-    let k = [];
-    for (let i in obj){
-        k.push(i);
-        v.push(obj[i]);
-    }
+    let v = Object.entries(obj);
     // Set up the chart
     const chart2 = new Highcharts.Chart({
         chart: {
@@ -77,7 +65,7 @@ fetch('../../json/rcb_run.json')
             text: 'Top batsman for Royal Challengers Bangalore'
         },
         xAxis:{
-            categories: k
+            type: 'category'
         },
         plotOptions: {
             column: {
