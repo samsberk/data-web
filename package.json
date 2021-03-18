@@ -1,0 +1,15 @@
+{
+  "name": "data-project-web",
+  "version": "1.0.0",
+  "description": "IPL data project. In this case the plotting happens on the browser with JS.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:mountblue/cohort-15-ruby/shivam_vishwakarma/data-project-web.git"
+  },
+  "author": "samsberk",
+  "license": "ISC"
+}
