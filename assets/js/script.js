@@ -90,13 +90,7 @@ fetch('../../json/total_ump_from_country.json')
     return response.json();
 })
 .then(function (obj){
-    // Set up the chart
-    let v = [];
-    let k = [];
-    for (let i in obj){
-        k.push(i);
-        v.push(obj[i]);
-    }
+    let v = Object.entries(obj);
     // Set up the chart
     const chart3 = new Highcharts.Chart({
         chart: {
@@ -114,7 +108,7 @@ fetch('../../json/total_ump_from_country.json')
             text: 'Foreign umpire analysis'
         },
         xAxis:{
-            categories: k
+            type:'category'
         },
         plotOptions: {
             column: {
@@ -122,7 +116,7 @@ fetch('../../json/total_ump_from_country.json')
             }
         },
         series: [{
-            name: 'No of Umpires from Cou',
+            name: 'Umpires from Cou',
             data: v
         }]
     });
@@ -141,14 +135,15 @@ fetch('../../json/team_details.json')
 })
 .then(function (obj){
     // Set up the chart
-    let v = [];
-    let k = [];
-    var i;
+    var seriesm = [];
     let season = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
     for (let i in obj){
-        k.push(i);
-        v.push(obj[i]);
+        seriesm.push({
+            name: i,
+            data: obj[i]
+        });
     }
+    console.log(seriesm);
     // Set up the chart
     const chart4 = new Highcharts.chart('problem4', {
         chart: {
@@ -161,8 +156,7 @@ fetch('../../json/team_details.json')
           text: 'Number of games played by team by season'
         },
         xAxis: {
-          categories: season,
-          crosshair: true
+          categories: season
         },
         yAxis: {
           min: 0,
@@ -184,37 +178,7 @@ fetch('../../json/team_details.json')
             borderWidth: 0
           }
         },
-        series: [{
-            name: k[0],
-            data: v[0]
-        },{
-            name: k[1],
-            data: v[1]
-        },{
-            name: k[2],
-            data: v[2]
-        },{
-            name: k[3],
-            data: v[3]
-        },{
-            name: k[4],
-            data: v[4]
-        },{
-            name: k[5],
-            data: v[5]
-        },{
-            name: k[6],
-            data: v[6]
-        },{
-            name: k[7],
-            data: v[7]
-        },{
-            name: k[8],
-            data: v[8]
-        },{
-            name: k[9],
-            data: v[9]
-        }]
+        series: seriesm
       });
 })
 .catch(function(error){
